@@ -18,14 +18,13 @@
       height: 32px;
       display: flex;
       align-items: center;
-      padding-left: 2px;
-      padding-right: 0.5rem;
+      padding: 2px;
       user-select: none;
     }
 
     &--selected &-image {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       margin-right: 0.5rem;
     }
 
