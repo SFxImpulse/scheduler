@@ -10,6 +10,10 @@ import DayList from "components/DayList";
 import DayListItem from "components/DayListItem";
 import InterviewerList from "components/InterviewerList";
 import InterviewerListItem from "components/InterviewerListItem";
+import Appointment from "components/Appointment/index";
+import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
+import Show from "components/Appointment/Show";
 
 storiesOf("Button", module)
   .addParameters({
@@ -112,23 +116,54 @@ const interviewers = [
 ];
 
 storiesOf("InterviewerList", module)
-    .addParameters({
-      backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-    })
-    .add("Initial", () => (
-      <InterviewerList
-        interviewers={interviewers}
-      />
-    ))
-    .add("Selected", () => (
-      <InterviewerList
-        interviewers={interviewers}
-        value={3}
-      />
-    ))
-    .add("Clickable", () => (
-      <InterviewerList
-        interviewers={interviewers}
-        onChange={action("setInterviewer")}
-      />
-    ));
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  })
+  .add("Initial", () => (
+    <InterviewerList
+      interviewers={interviewers}
+    />
+  ))
+  .add("Selected", () => (
+    <InterviewerList
+      interviewers={interviewers}
+      value={3}
+    />
+  ))
+  .add("Clickable", () => (
+    <InterviewerList
+      interviewers={interviewers}
+      onChange={action("setInterviewer")}
+    />
+  ));
+
+storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => {
+    return <Appointment />
+  })
+  .add("Appointment with Time", () => {
+    return <Appointment 
+      time="12pm"
+    />
+  })
+  .add("Header", () => {
+    return <Header
+      time="12pm"
+    />
+  })
+  .add("Empty", () => {
+    return <Empty
+      onAdd={action("onAdd")}
+    />
+  })
+  .add("Show", () => {
+    return <Show
+      student="Lydia Miller-Jones"
+      interviewer={interviewer}
+      onEdit={action("onEdit")}
+      onDelete={action("onDelete")}
+    />
+  })
