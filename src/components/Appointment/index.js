@@ -13,7 +13,20 @@ export default function Appointment (props) {
       <Header 
         time={props.time}
       />
-      {props.interview ? <Show /> : <Empty />}
+      {
+        props.interview
+        ? 
+        <Show 
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
+        />
+        :
+        <Empty
+          onAdd={props.onAdd}
+        />
+      }
     </article>
   );
 }
