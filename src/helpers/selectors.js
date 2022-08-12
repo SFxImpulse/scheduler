@@ -6,25 +6,44 @@ export function getAppointmentsForDay(state, day) {
     return [];
   }
   
-  const appointmentsOutput = Object.values(state.appointments);
+  const appointments = Object.values(state.appointments);
 
-  const daysOutput = state.days.filter((dayName) => {
+  state.days.filter((dayName) => {
 
     let appointmentsArray;
 
     if (dayName.name === day) {
       appointmentsArray = dayName.appointments;
       appointmentsArray.forEach((appointment) => {
-        appointmentsOutput.forEach((id) => {
+        appointments.forEach((id) => {
           if (id.id === appointment) {
-            output.push(id);
+            return output.push(id);
           }
-        })
-      })
+        });
+      });
     }
-
   });
 
   return output;
 
-}
+};
+
+export function getInterview(state, interview) {
+  
+  if (!interview) {
+    return null;
+  }
+  
+  const outputObj = { student: interview.student };
+
+  const interviewers = Object.values(state.interviewers);
+
+  interviewers.forEach(interviewer => {
+    if (interviewer.id === interview.interviewer) {
+      outputObj.interviewer = interviewer;
+    }
+  });
+  
+  return outputObj;
+
+};
