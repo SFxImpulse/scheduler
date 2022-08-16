@@ -5,7 +5,7 @@ import axios from "axios";
 import DayList from "./DayList";
 import Appointment from "./Appointment/index";
 
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors";
 
 import "components/Application.scss";
 
@@ -68,7 +68,6 @@ import "components/Application.scss";
 // };
 
 export default function Application (props) {
-
   
   const [state, setState] = useState({
     day: "Monday",
@@ -90,6 +89,61 @@ export default function Application (props) {
   }, []);
   
   const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const dailyInterviewers = getInterviewersForDay(state, state.day);
+
+  function bookInterview (id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.put(`/api/appointments/${id}`, { interview })
+      .then(() => {      
+        setState({
+          ...state,
+          appointments
+        });
+      });
+  };
+
+  function updateInterview (id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.put(`/api/appointments/${id}`, { ...interview })
+      .then(() => {
+        setState({
+          ...state,
+          appointments
+        });
+      });
+  };
+
+  function cancelInterview (id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    return axios.delete(`/api/appointments/${id}`, { interview: null })
+      .then(() => {
+        setState({
+          ...state,
+          appointments
+        });
+      });
+  };
 
   return (
     <main className="layout">
@@ -122,6 +176,10 @@ export default function Application (props) {
               id={appointment.id}
               time={appointment.time}
               interview={interview}
+              interviewers={dailyInterviewers}
+              bookInterview={bookInterview}
+              updateInterview={updateInterview}
+              cancelInterview={cancelInterview}
             />
           );
         })}
@@ -129,4 +187,4 @@ export default function Application (props) {
       </section>
     </main>
   );
-}
+};
