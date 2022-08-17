@@ -1,3 +1,4 @@
+// Renders and exports the Show appointment component.
 import React from "react";
 
 export default function Show (props) {

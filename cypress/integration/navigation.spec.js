@@ -1,19 +1,9 @@
 describe("Navigation", () => {
-  it("should visit root", () => {
+  it("should navigate to Tuesday", () => { 
     cy.visit("/");
 
-  });
-
-  it("should navigate to Tuesday", () => { 
-    cy.get("li")
-    .contains("Tuesday")
-    .click(); 
-  });
-  
-  it("should contain the Tuesday element", () => {
-    cy.contains("li", "Tuesday")
+    cy.contains("[data-testid=day]", "Tuesday")
       .click()
-      .should("have.css", "background-color", "rgb(242, 242, 242)");
+      .should("have.class", "day-list__item--selected");
   });
-    
 });

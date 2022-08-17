@@ -1,3 +1,4 @@
+// Storybook stories for each different appointment mode
 import React, { Fragment } from "react";
 
 import { storiesOf } from "@storybook/react";

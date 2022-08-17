@@ -1,3 +1,4 @@
+// Renders and exports the InterviewerListItem component.
 import React from 'react';
 
 import classNames from "classnames";

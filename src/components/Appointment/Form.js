@@ -1,3 +1,4 @@
+// Renders and exports the create and edit appointment Form component.
 import React, { useState } from "react";
 
 import Button from "components/Button";
@@ -5,20 +6,27 @@ import InterviewerList from "components/InterviewerList";
 
 export default function Form (props) {
 
+  // Defines the state for student, interviewer, and error.
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
+  // Resets the state for the student and interviewer
   const reset = () => {
     setStudent("");
     setInterviewer(null);
   };
 
+  // Calls props.onCancel to return the value of the reset function upon cancelling the creation of an appointment.
   const cancel = () => {
     props.onCancel(); 
     reset();
   };
 
+  // Validates the states for student and interviewer to display an error if either:
+    // The student name input field is empty.
+    // An interviewer was not selected.
+    // By default, the error state is empty, and the student name and selected interviewer are saved.
   const validate = () => {
     if (student === "") {
       setError("Student name cannot be blank");

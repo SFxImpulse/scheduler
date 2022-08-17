@@ -1,3 +1,4 @@
+// Renders and exports the appointment Header component.
 import React from "react";
 
 export default function Header (props) {

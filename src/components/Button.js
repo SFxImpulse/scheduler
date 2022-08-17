@@ -1,3 +1,4 @@
+// Renders and exports the different Button components.
 import React from "react";
 
 import classNames from "classnames";

@@ -1,3 +1,4 @@
+// Renders and exports the DayListItem component.
 import React from "react";
 
 import classNames from "classnames";

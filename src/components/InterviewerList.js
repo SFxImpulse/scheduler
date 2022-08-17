@@ -1,3 +1,4 @@
+// Renders an exports the InterviewerList component.
 import React from "react";
 
 import PropTypes from 'prop-types';

@@ -1,3 +1,4 @@
+// Renders and exports the saving or deleting Status component.
 import React from "react";
 
 export default function Status (props) {

@@ -1,3 +1,4 @@
+// Tests for the selector functions.
 import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors";
 
 const state = {

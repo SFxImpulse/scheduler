@@ -1,3 +1,4 @@
+// Renders and exports the Empty appointment component.
 import React from "react";
 
 export default function Empty (props) {

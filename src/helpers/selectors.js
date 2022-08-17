@@ -1,3 +1,5 @@
+// Specific functions for selecting specific information.
+
 // Return an array of appointment objects for a specific day.
 export function getAppointmentsForDay(state, day) {
 

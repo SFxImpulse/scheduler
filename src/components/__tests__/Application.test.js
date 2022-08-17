@@ -1,3 +1,5 @@
+// Unit and Integration Tests for the entire Application Component.
+
 import React from "react";
 
 import axios from "axios";
@@ -61,12 +63,14 @@ describe("Application", () => {
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     const appointment = getAllByTestId(container, "appointment").find(
-      appointment => queryByText(appointment, "Archie Cohen")
+      (appointment) => queryByText(appointment, "Archie Cohen")
     );
 
     fireEvent.click(getByAltText(appointment, "Delete"));
 
-    expect(getByText(appointment, "Are you sure you want to cancel your interview?")).toBeInTheDocument();
+    expect(
+      getByText(appointment, "Are you sure you want to cancel your interview?")
+    ).toBeInTheDocument();
 
     fireEvent.click(getByText(appointment, "Confirm"));
 
@@ -87,7 +91,7 @@ describe("Application", () => {
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     const appointment = getAllByTestId(container, "appointment").find(
-      appointment => queryByText(appointment, "Archie Cohen")
+      (appointment) => queryByText(appointment, "Archie Cohen")
     );
 
     fireEvent.click(getByAltText(appointment, "Edit"));
@@ -125,7 +129,12 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     fireEvent.click(getByText(appointment, "Save"));
 
-    await waitForElement(() => getByText(appointment, "An error has occurred while saving your interview!"));
+    await waitForElement(() =>
+      getByText(
+        appointment,
+        "An error has occurred while saving your interview!"
+      )
+    );
 
     fireEvent.click(getByAltText(appointment, "Close"));
 
@@ -140,21 +149,26 @@ describe("Application", () => {
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     const appointment = getAllByTestId(container, "appointment").find(
-      appointment => queryByText(appointment, "Archie Cohen")
+      (appointment) => queryByText(appointment, "Archie Cohen")
     );
 
     fireEvent.click(getByAltText(appointment, "Delete"));
-    
+
     expect(getByText(appointment, "Confirm")).toBeInTheDocument();
 
     fireEvent.click(getByText(appointment, "Confirm"));
 
     expect(getByText(appointment, "Deleting")).toBeInTheDocument();
 
-    await waitForElement(() => getByText(appointment, "An error has occurred while deleting your interview!"));
-    
+    await waitForElement(() =>
+      getByText(
+        appointment,
+        "An error has occurred while deleting your interview!"
+      )
+    );
+
     fireEvent.click(getByAltText(appointment, "Close"));
 
-    expect(getByText(appointment, "Archie Cohen")).toBeInTheDocument();    
+    expect(getByText(appointment, "Archie Cohen")).toBeInTheDocument();
   });
 });

@@ -1,3 +1,4 @@
+// Renders and exports the appointment error component.
 import React from "react";
 
 export default function Error (props) {

@@ -1,3 +1,4 @@
+// Main Application component, renders the entire webpage from this file.
 import React from "react";
 
 import DayList from "./DayList";
@@ -15,7 +16,12 @@ import "components/Application.scss";
 export default function Application(props) {
 
   // Retrieving functions from custom hook useApplicationData.
-  const { state,
+    // the state object representing the current state.
+    // The setDay function which sets the state of the day object.
+    // The bookInterview function.
+    // The cancelInterview function.
+  const { 
+    state,
     setDay,
     bookInterview,
     cancelInterview 
@@ -40,7 +46,6 @@ export default function Application(props) {
     }
   );
 
-  // The Application component
   return (
     <main className="layout">
       <section className="sidebar">

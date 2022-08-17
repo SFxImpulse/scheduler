@@ -1,3 +1,4 @@
+// Exports and renders the Appointment component. The index for the rest of the appointment components.
 import React from "react";
 
 import "./styles.scss";
@@ -24,15 +25,24 @@ const DELETE_ERROR = "DELETE_ERROR";
 
 export default function Appointment (props) {
 
+  // Custom hook useVisualMode:
+    // Imports the mode state which determines which state a single interview is at a given time.
+    // The transition function which changes the mode state.
+    // The back function which skips over modes and returns to a previous mode.
+    // By default is either in the SHOW or EMPTY mode based on the value of props.interview.
   const { mode, transition, back } = useVisualMode (
     props.interview ? SHOW : EMPTY
   );
   
+  // Saves the interview object to an appointment object using the bookInterview function. 
+    // Then transitions to the SHOW mode upon successful save to the API database.
+    // Or transitions to SAVING_ERROR mode upon unsuccessful save.
   function save (name, interviewer) {
     const interview = {
       student: name,
       interviewer
     };
+
     transition(SAVING);
     props
       .bookInterview(props.id, interview)
@@ -40,6 +50,9 @@ export default function Appointment (props) {
       .catch(error => transition(SAVE_ERROR, true));
   };
 
+  // Deletes an existing interview object from an appointment object using the cancelInterview function.
+    // Then transitions to the EMPTY mode upon successful deleting from the API database.
+    // Or transitions to DELETE_ERROR mode upon unsuccessful deletion.
   function destroy (event) {
     transition(DELETING, true);
     props

@@ -1,3 +1,4 @@
+// Renders and exports the Confirm delete appointment component.
 import React from "react";
 
 import Button from "components/Button";
