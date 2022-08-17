@@ -55,7 +55,7 @@ export default function useApplicationData() {
     
   };
 
-    */
+  */
 
   // Defines setDay function as to set the state of the current day.
   const setDay = (day) => setState((prev) => ({ ...prev, day }));
