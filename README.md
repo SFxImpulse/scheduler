@@ -20,6 +20,10 @@ And here an interview is deleted.
 
 !["Deleting an Interview"](./screenshots/gif-3.gif)
 
+## Extra Information
+
+The schedular application also relies on the schedular API, which is where each interview appointment is written to and retrieved from. It is a requirement to run when running the Interview Scheduler App.
+
 ## Getting Started
 
 Install the dependencies with `npm install`.
