@@ -14,17 +14,17 @@ export default function useVisualMode (initial) {
     setMode(newMode);
     setHistory(prev => [...prev, mode]);
     if (replace) {
-      setHistory([initial]);
+      setHistory(prev => [...prev].slice(0, -1));
     }
   };
 
   // Back function
-    // Removes a mode when from the mode state when going return to a previous mode.
+    // Removes a mode from the history array to return to a previous one.
   const back = () => {
     setHistory(prev => [...prev].slice(0, -1));
     setMode(history[history.length - 1]);
   };
-
+  
   return { mode, transition, back };
   
 };
