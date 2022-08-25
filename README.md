@@ -24,6 +24,8 @@ And here an interview is deleted.
 
 The schedular application also relies on the schedular API, which is where each interview appointment is written to and retrieved from. It is a requirement to run when running the Interview Scheduler App.
 
+Here is a link to get you started: https://github.com/SFxImpulse/scheduler-api
+
 ## Getting Started
 
 Install the dependencies with `npm install`.
